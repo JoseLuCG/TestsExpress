@@ -1,0 +1,23 @@
+{
+  "name": "testsexpress",
+  "version": "1.0.0",
+  "description": "Proof severals configurations with express.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseLuCG/TestsExpress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoseLuCG/TestsExpress/issues"
+  },
+  "homepage": "https://github.com/JoseLuCG/TestsExpress#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
