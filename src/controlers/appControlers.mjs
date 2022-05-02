@@ -1,4 +1,5 @@
-import { dataTask } from "../models/models.mjs";
+import { response } from "express";
+import { dataTask, db } from "../models/models.mjs";
 
 /**
  * Adds the data receive to the array messagesDtata.
@@ -7,20 +8,37 @@ import { dataTask } from "../models/models.mjs";
  */
 export function pushingTaskControler(req, res) {
     try {
-        dataTask.push(req.body);
-        res.sendStatus(201); 
+        const { description, done} = req.body;
+        const sql = `INSERT INTO task(description, done)
+                     VALUES ("${description}", ${done})`;
+        db.run(sql, (err)=>{
+            if (err){
+                console.error(err);
+                response.sendStatus(500);
+            } else {
+                res.sendStatus(201);
+            }
+        });
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
     }   
 }
 /**
- * Responds with the array of tasks. 
+ * Responds with the task in database. 
  * @param {*} req 
  * @param {*} res 
  */
 export function getControler (req, res) {
-    res.send(dataTask);
+    const sql = `SELECT id, description, done FROM tasks`
+    db.all(sql, (err, data)=>{
+        if (err) {
+            console.error(err);
+            response.sendStatus(500);
+        } else {
+            res.json(data);
+        }
+    });
 }
 /**
  * Edit a object for array of task. 
