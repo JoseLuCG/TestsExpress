@@ -16,21 +16,3 @@ db.run(`
             done BOOLEAN DEFAULT false NOT NULL,
         )
 `);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const dataTask = [];
