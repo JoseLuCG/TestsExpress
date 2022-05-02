@@ -1,5 +1,7 @@
 import express from "express";
-import { getControler, pushingMessagesControler, putTaskControler, deleteTaskControler } from "./controlers/appControlers.mjs";
+import { getControler, pushingTaskControler, putTaskControler, deleteTaskControler } from "./controlers/appControlers.mjs";
+import { validatorFactory } from "./middlewares/jsonValidator.mjs";
+import { taskSchema, newTaskSchema, deleteTaskSchema } from "./schemas/taskSchema.mjs";
 
 const app = express();
 const PORT = 3000;
@@ -11,10 +13,10 @@ const jsonParser = express.json();
 
 
 try {
-    app.get("/tasks/", getControler);
-    app.post("/task/", jsonParser , pushingMessagesControler);
-    app.put("/task/", jsonParser, putTaskControler);
-    app.delete("/task/", jsonParser, deleteTaskControler);
+    app.get( "/tasks/", getControler );
+    app.post( "/task/", jsonParser , validatorFactory(newTaskSchema) , pushingTaskControler );
+    app.put( "/task/", jsonParser , validatorFactory(taskSchema) , putTaskControler );
+    app.delete("/task/", jsonParser , validatorFactory(deleteTaskSchema) , deleteTaskControler );
 
     app.listen(PORT, ()=>{
         console.log("Express Runing...");

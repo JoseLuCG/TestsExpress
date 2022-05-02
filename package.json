@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JoseLuCG/TestsExpress#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "jsonschema": "^1.4.0"
+    "jsonschema": "^1.4.0",
+    "sqlite3": "^5.0.6"
   }
 }

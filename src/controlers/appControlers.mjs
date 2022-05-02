@@ -5,7 +5,7 @@ import { dataTask } from "../models/models.mjs";
  * @param {*} req 
  * @param {*} res 
  */
-export function pushingMessagesControler(req, res) {
+export function pushingTaskControler(req, res) {
     try {
         dataTask.push(req.body);
         res.sendStatus(201); 
