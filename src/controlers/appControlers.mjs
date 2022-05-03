@@ -1,5 +1,5 @@
 import { response } from "express";
-import { dataTask, db } from "../models/models.mjs";
+import { db } from "../models/models.mjs";
 
 /**
  * Adds the data receive to the array messagesDtata.
@@ -9,7 +9,7 @@ import { dataTask, db } from "../models/models.mjs";
 export function pushingTaskControler(req, res) {
     try {
         const { description, done} = req.body;
-        const sql = `INSERT INTO task(description, done)
+        const sql = `INSERT INTO tasks(description, done)
                      VALUES ("${description}", ${done})`;
         db.run(sql, (err)=>{
             if (err){

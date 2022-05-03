@@ -11,8 +11,8 @@ db.run(`
     CREATE TABLE
         IF NOT EXISTS
         tasks (
-            id INTEGER PREIMARY KEY,
+            id INTEGER PRIMARY KEY,
             description VARCHAR(100) NOT NULL,
-            done BOOLEAN DEFAULT false NOT NULL,
+            done BOOLEAN DEFAULT false NOT NULL
         )
 `);
